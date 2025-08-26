@@ -273,9 +273,8 @@ export default function Home() {
         </div>
 
         {/* 손글씨 이미지 및 텍스트 */}
-        <div className="flex justify-center items-center flex-col gap-1">
+        <div className="flex justify-center items-center  px-4 py-3 flex-col gap-1">
           <img src="/character2.jpg" alt="서예 붓을 든 손" className="w-full" />
-          <div className="text-xs text-gray-700">슥슥</div>
         </div>
 
         {/* 말풍선 2 */}
@@ -286,7 +285,11 @@ export default function Home() {
         </div>
 
         {/* 캐릭터 공부 이미지 */}
-        <img src="/character2.png" alt="공부하는 캐릭터" className="w-full" />
+        <img
+          src="/character3.jpg"
+          alt="전통 한복을 입고 공부하는 여성 캐릭터"
+          className="w-full"
+        />
 
         {/* 사주팔자표 컴포넌트 */}
         <div className="my-6">
