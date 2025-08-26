@@ -1,4 +1,5 @@
 {
+  "name": "locatai-tailwind",
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
