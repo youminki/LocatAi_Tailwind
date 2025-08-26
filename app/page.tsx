@@ -224,6 +224,84 @@ export default function Home() {
             alt="전통 한복을 입은 여성 캐릭터"
             className="w-full"
           />
+          {/* 제목 오버레이 */}
+          <div
+            className="absolute flex flex-col items-center"
+            style={{
+              width: "157px",
+              height: "82px",
+              left: "calc(50% - 158px/2)",
+              top: "81px",
+              gap: "12px",
+            }}
+          >
+            {/* 제 1장 */}
+            <div
+              style={{
+                width: "157px",
+                height: "20px",
+                fontFamily: "GyeonggiBatangOTF",
+                fontStyle: "normal",
+                fontWeight: 400,
+                fontSize: "20px",
+                lineHeight: "100%",
+                textAlign: "center",
+                letterSpacing: "-0.005em",
+                color: "#FFFFFF",
+                zIndex: 1,
+              }}
+            >
+              제 1장
+            </div>
+
+            {/* 장식 요소 (골든 노트) */}
+            <div
+              className="relative"
+              style={{ width: "157px", height: "20px" }}
+            >
+              {/* 장식 요소들을 SVG로 구현 */}
+              <svg
+                width="157"
+                height="20"
+                viewBox="0 0 157 20"
+                style={{ position: "absolute" }}
+              >
+                {/* 중앙 세로선 */}
+                <rect x="74.5" y="0" width="1" height="15" fill="#E6D9A4" />
+                {/* 중앙 가로선 */}
+                <rect x="73" y="7.5" width="11" height="1" fill="#E6D9A4" />
+                {/* 좌우 장식 요소들 */}
+                <rect x="68" y="9.5" width="1" height="1" fill="#E6D9A4" />
+                <rect x="88" y="9.5" width="1" height="1" fill="#E6D9A4" />
+                <rect x="71.5" y="6.5" width="1" height="1" fill="#E6D9A4" />
+                <rect x="84.5" y="6.5" width="1" height="1" fill="#E6D9A4" />
+                <rect x="73.5" y="4.5" width="1" height="1" fill="#E6D9A4" />
+                <rect x="82.5" y="4.5" width="1" height="1" fill="#E6D9A4" />
+                <rect x="73.5" y="11.5" width="1" height="1" fill="#E6D9A4" />
+                <rect x="82.5" y="11.5" width="1" height="1" fill="#E6D9A4" />
+              </svg>
+            </div>
+
+            {/* 나의 사주 팔자 */}
+            <div
+              style={{
+                width: "157px",
+                height: "20px",
+                fontFamily: "GyeonggiBatangOTF",
+                fontStyle: "normal",
+                fontWeight: 400,
+                fontSize: "20px",
+                lineHeight: "100%",
+                textAlign: "center",
+                letterSpacing: "-0.005em",
+                color: "#FFFFFF",
+                zIndex: 1,
+              }}
+            >
+              나의 사주 팔자
+            </div>
+          </div>
+
           {/* 그라데이션 오버레이 */}
           <div
             className="absolute"
