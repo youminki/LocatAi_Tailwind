@@ -252,7 +252,7 @@ export default function Home() {
         {/* 사주팔자표 컴포넌트 */}
         <div className="my-6">
           <div
-            className="relative w-full max-w-[351px] mx-auto border-[3px] border-[#1B2F49] shadow-lg rounded-md overflow-hidden"
+            className="relative w-full max-w-[351px] mx-auto border-[3px] border-[#1B2F49] shadow-lg  overflow-hidden"
             style={{
               backgroundImage: "url('/Frame 1410141530.jpg')",
               backgroundSize: "cover",
@@ -262,7 +262,7 @@ export default function Home() {
             }}
           >
             {/* 헤더 */}
-            <div className="text-center py-3 font-bold text-sm border-b border-[#2B557E]">
+            <div className="text-center py-3 font-bold text-sm">
               <div className="text-[#424242] text-base">김로켓님의 사주</div>
               <div className="text-[#424242] text-xl font-bold mt-1">
                 1980년 8월27일 08:10
@@ -273,27 +273,35 @@ export default function Home() {
             <div className="p-5">
               {/* 메인 테이블 그리드 */}
               <div className="w-[310px] h-[473.83px] mx-auto bg-white bg-opacity-80 rounded-lg overflow-hidden">
-                {/* 테이블 구조 */}
+                {/* 테이블 구조 - 5열 8행 */}
                 <div className="grid grid-cols-5 grid-rows-8 h-full">
+                  {/* 1행: 컬럼 헤더 */}
                   {/* 빈 셀 (좌상단) */}
                   <div className="col-span-1 row-span-1"></div>
 
-                  {/* 컬럼 헤더 */}
-                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black">
+                  {/* 時 (시) */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black border-r border-[#8A8A8A]">
                     時
                   </div>
-                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black">
+
+                  {/* 日 (일) */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black border-r border-[#8A8A8A]">
                     日
                   </div>
-                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black">
+
+                  {/* 月 (월) */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black border-r border-[#8A8A8A]">
                     月
                   </div>
+
+                  {/* 年 (년) */}
                   <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black">
                     年
                   </div>
 
-                  {/* 로우 라벨 - 첫 번째 십성 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                  {/* 2행: 첫 번째 십성 (천간용) */}
+                  {/* 十星 라벨 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r-2 border-black border-b border-[#9B9B9B]">
                     <div className="text-[11.9985px] leading-[17px] font-normal text-black">
                       十星
                     </div>
@@ -302,8 +310,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 첫 번째 십성 데이터들 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                  {/* 傷官 (상관) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[14.6688px] leading-[21px] font-normal text-black">
                       傷官
                     </div>
@@ -311,7 +319,9 @@ export default function Home() {
                       (상관)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 比肩 (비견) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[14.6688px] leading-[21px] font-normal text-black">
                       比肩
                     </div>
@@ -319,7 +329,9 @@ export default function Home() {
                       (비견)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 傷官 (상관) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[14.6688px] leading-[21px] font-normal text-black">
                       傷官
                     </div>
@@ -327,6 +339,8 @@ export default function Home() {
                       (상관)
                     </div>
                   </div>
+
+                  {/* 傷官 (상관) */}
                   <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
                     <div className="text-[14.6688px] leading-[21px] font-normal text-black">
                       傷官
@@ -336,8 +350,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 로우 라벨 - 천간 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                  {/* 3행: 천간 */}
+                  {/* 天干 라벨 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r-2 border-black border-b-2 border-black">
                     <div className="text-[11.9985px] leading-[17px] font-normal text-black">
                       天干
                     </div>
@@ -346,8 +361,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 천간 박스들 */}
-                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black">
+                  {/* 壬 (임) - 양수 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black border-r border-[#8A8A8A]">
                     <div className="w-[55.45px] h-[55.45px] bg-[#2F2F2F] rounded-[12.5537px] flex flex-col items-center justify-center">
                       <div className="text-white text-[25.1075px] leading-[36px] font-normal">
                         壬
@@ -360,8 +375,10 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black">
-                    <div className="w-[55.45px] h-[55.45px] bg-[#18868C] rounded-[12.5537px] flex flex-col items-center justify-center">
+
+                  {/* 丁 (정) - 음화 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black border-r border-[#8A8A8A]">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#C23030] rounded-[12.5537px] flex flex-col items-center justify-center">
                       <div className="text-white text-[25.1075px] leading-[36px] font-normal">
                         丁
                       </div>
@@ -373,8 +390,10 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black">
-                    <div className="w-[55.45px] h-[55.45px] bg-[#C23030] rounded-[12.5537px] flex flex-col items-center justify-center">
+
+                  {/* 癸 (계) - 음수 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black border-r border-[#8A8A8A]">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#2F2F2F] rounded-[12.5537px] flex flex-col items-center justify-center">
                       <div className="text-white text-[25.1075px] leading-[36px] font-normal">
                         癸
                       </div>
@@ -386,6 +405,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
+
+                  {/* 癸 (계) - 음수 */}
                   <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black">
                     <div className="w-[55.45px] h-[55.45px] bg-[#2F2F2F] rounded-[12.5537px] flex flex-col items-center justify-center">
                       <div className="text-[#F9F9F9] text-[25.1075px] leading-[36px] font-normal">
@@ -400,8 +421,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 로우 라벨 - 지지 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                  {/* 4행: 지지 */}
+                  {/* 地支 라벨 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r-2 border-black border-b border-[#9B9B9B]">
                     <div className="text-[11.9985px] leading-[17px] font-normal text-black">
                       地支
                     </div>
@@ -410,8 +432,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 지지 박스들 */}
-                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B]">
+                  {/* 寅 (인) - 양목 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="w-[55.45px] h-[55.45px] bg-[#18868C] rounded-[12.5537px] flex flex-col items-center justify-center">
                       <div className="text-white text-[25.1075px] leading-[36px] font-normal">
                         寅
@@ -424,7 +446,9 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 巳 (사) - 음화 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="w-[55.45px] h-[55.45px] bg-[#C23030] rounded-[12.5537px] flex flex-col items-center justify-center">
                       <div className="text-white text-[25.1075px] leading-[36px] font-normal">
                         巳
@@ -437,7 +461,9 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 亥 (해) - 음수 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="w-[55.45px] h-[55.45px] bg-[#2F2F2F] rounded-[12.5537px] flex flex-col items-center justify-center">
                       <div className="text-white text-[25.1075px] leading-[36px] font-normal">
                         亥
@@ -450,6 +476,8 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
+
+                  {/* 酉 (유) - 음금 */}
                   <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B]">
                     <div className="w-[55.45px] h-[55.45px] bg-[#F9F9F9] border border-black rounded-[12.5537px] flex flex-col items-center justify-center">
                       <div className="text-black text-[25.1075px] leading-[36px] font-normal">
@@ -464,8 +492,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 로우 라벨 - 두 번째 십성 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                  {/* 5행: 두 번째 십성 (지지용) */}
+                  {/* 十星 라벨 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r-2 border-black border-b border-[#9B9B9B]">
                     <div className="text-[11.9985px] leading-[17px] font-normal text-black">
                       十星
                     </div>
@@ -474,8 +503,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 두 번째 십성 데이터들 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                  {/* 比肩 (비견) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[14.6688px] leading-[21px] font-normal text-black">
                       比肩
                     </div>
@@ -483,7 +512,9 @@ export default function Home() {
                       (비견)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 劫財 (겁재) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[14.6688px] leading-[21px] font-normal text-black">
                       劫財
                     </div>
@@ -491,7 +522,9 @@ export default function Home() {
                       (겁재)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 食神 (식신) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[14.6688px] leading-[21px] font-normal text-black">
                       食神
                     </div>
@@ -499,6 +532,8 @@ export default function Home() {
                       (식신)
                     </div>
                   </div>
+
+                  {/* 偏財 (편재) */}
                   <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
                     <div className="text-[14.6688px] leading-[21px] font-normal text-black">
                       偏財
@@ -508,8 +543,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 로우 라벨 - 십이운성 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                  {/* 6행: 십이운성 */}
+                  {/* 十二運星 라벨 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r-2 border-black border-b border-[#9B9B9B]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       十二運星
                     </div>
@@ -518,8 +554,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 십이운성 데이터들 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                  {/* 死 (사) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       死
                     </div>
@@ -527,7 +563,9 @@ export default function Home() {
                       (사)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 帝旺 (제왕) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       帝旺
                     </div>
@@ -535,7 +573,9 @@ export default function Home() {
                       (제왕)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 胎 (태) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       胎
                     </div>
@@ -543,6 +583,8 @@ export default function Home() {
                       (태)
                     </div>
                   </div>
+
+                  {/* 長生 (장생) */}
                   <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       長生
@@ -552,8 +594,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 로우 라벨 - 십이신살 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                  {/* 7행: 십이신살 */}
+                  {/* 十二神殺 라벨 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r-2 border-black border-b border-[#9B9B9B]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       十二神殺
                     </div>
@@ -562,8 +605,8 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 십이신살 데이터들 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                  {/* 劫殺 (겁살) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       劫殺
                     </div>
@@ -571,7 +614,9 @@ export default function Home() {
                       (겁살)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 地殺 (지살) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       地殺
                     </div>
@@ -579,7 +624,9 @@ export default function Home() {
                       (지살)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+
+                  {/* 驛馬殺 (역마살) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B] border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       驛馬殺
                     </div>
@@ -587,6 +634,8 @@ export default function Home() {
                       (역마살)
                     </div>
                   </div>
+
+                  {/* 將星殺 (장성살) */}
                   <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
                     <div className="text-[9.77918px] leading-[14px] font-normal text-black">
                       將星殺
@@ -596,8 +645,9 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 로우 라벨 - 귀인 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                  {/* 8행: 귀인 */}
+                  {/* 貴人 라벨 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r-2 border-black">
                     <div className="text-[11.9985px] leading-[17px] font-normal text-black">
                       貴人
                     </div>
@@ -606,22 +656,28 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* 귀인 데이터들 */}
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center">
+                  {/* (없음) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[10px] font-bold text-black">
                       (없음)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center">
+
+                  {/* (없음) */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[10px] font-bold text-black">
                       (없음)
                     </div>
                   </div>
-                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center">
+
+                  {/* 天乙 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-[#8A8A8A]">
                     <div className="text-[9.77918px] leading-[10px] font-bold text-black">
                       天乙
                     </div>
                   </div>
+
+                  {/* 天乙 太極 文昌 */}
                   <div className="col-span-1 row-span-1 flex flex-col items-center justify-center">
                     <div className="text-[9.77918px] leading-[10px] font-bold text-black">
                       <div>天乙</div>
