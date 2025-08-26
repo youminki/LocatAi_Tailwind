@@ -264,7 +264,26 @@ export default function Home() {
             }}
           />
         </div>
-
+        {/* 말풍선 이미지와 텍스트 */}
+        <div
+          className="absolute Bottom-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-50"
+          style={{
+            marginBottom: "50px",
+          }}
+        >
+          <div className="relative">
+            <img src="/Union.png" alt="말풍선" className="w-64 h-auto" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="text-gray-800 text-sm font-medium text-center px-8 leading-relaxed pt-5">
+                이제 본격적으로
+                <br />
+                <span className="font-bold">OO님</span>의 사주팔자를
+                <br />
+                분석해볼 차례네요.
+              </p>
+            </div>
+          </div>
+        </div>
         {/* 손글씨 이미지 및 텍스트 */}
         <div
           className="flex justify-center items-center flex-col gap-1"
@@ -278,16 +297,46 @@ export default function Home() {
         </div>
 
         {/* 캐릭터 공부 이미지 */}
-        <img
-          src="/character3.jpg"
-          alt="전통 한복을 입고 공부하는 여성 캐릭터"
-          className="w-full"
-        />
+        <div className="relative">
+          <img
+            src="/character3.jpg"
+            alt="전통 한복을 입고 공부하는 여성 캐릭터"
+            className="w-full"
+          />
+
+          {/* Union2.png 이미지 - character3 위에 absolute로 배치 */}
+          <div className="absolute -top-4 left-1/3 transform -translate-x-1/2 -translate-y-1/2 z-50">
+            <div className="relative">
+              <img src="/Union2.png" alt="말풍선" className="w-64 h-auto" />
+              <div className="absolute inset-0 flex items-start justify-center pt-11">
+                <p className="text-gray-800 text-sm font-medium text-center px-8 leading-relaxed">
+                  제가 <span className="font-bold">OO님</span>의 사주를
+                  <br />
+                  보기 쉽게 표로 정리했어요
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Rectangle 218 - 하단 그라데이션 오버레이 */}
+          <div
+            className="absolute w-full"
+            style={{
+              height: "118px",
+              left: "0px",
+              right: "0",
+              bottom: "0px",
+              background:
+                "linear-gradient(180deg, rgba(243, 242, 239, 0) 25.16%, #F3F2EF 100%)",
+              transform: "matrix(-1, 0, 0, 1, 0, 0)",
+            }}
+          />
+        </div>
 
         {/* 사주팔자표 컴포넌트 */}
-        <div className="my-6">
+        <div className="mt-0 mb-6 p-5">
           <div
-            className="relative w-full max-w-[448px] mx-auto border-[3px] border-[#1B2F49] shadow-lg  overflow-hidden"
+            className="relative w-full border-[3px] border-[#1B2F49] shadow-lg overflow-hidden"
             style={{
               padding: "30px 0",
               backgroundImage: "url('/Frame 1410141530.jpg')",
@@ -340,7 +389,7 @@ export default function Home() {
             </div>
 
             {/* 테이블 컨테이너 */}
-            <div className="p-5">
+            <div className="p-5 ">
               {/* 메인 테이블 그리드 */}
               <div className=" mx-auto bg-white bg-opacity-80 overflow-hidden border-r-2 border-b-2 border-black">
                 {/* 테이블 구조 - 5열 8행 */}
