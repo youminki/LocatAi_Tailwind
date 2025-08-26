@@ -315,6 +315,19 @@ export default function Home() {
               transform: "rotate(-180deg)",
             }}
           />
+          
+          {/* 하단 그라데이션 오버레이 */}
+          <div
+            className="absolute"
+            style={{
+              width: "375px",
+              height: "195px",
+              left: "calc(50% - 375px/2 - 0px)",
+              top: "463px",
+              background: "linear-gradient(180deg, rgba(243, 242, 239, 0) 25.16%, #F3F2EF 100%)",
+              transform: "matrix(-1, 0, 0, 1, 0, 0)",
+            }}
+          />
         </div>
 
         {/* 말풍선 1 */}
