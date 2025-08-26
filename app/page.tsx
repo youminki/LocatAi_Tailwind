@@ -209,7 +209,7 @@ const getKoreanLabel = (category: string, value: string): string => {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-100 py-8 px-4">
+    <main className="min-h-screen bg-gray-100 py-0 px-0">
       <div
         className="relative w-full max-w-md mx-auto bg-cover bg-center bg-no-repeat"
         style={{
@@ -231,76 +231,10 @@ export default function Home() {
               width: "157px",
               height: "82px",
               left: "calc(50% - 158px/2)",
-              top: "81px",
+              top: "85px",
               gap: "12px",
             }}
-          >
-            {/* 제 1장 */}
-            <div
-              style={{
-                width: "157px",
-                height: "20px",
-                fontFamily: "GyeonggiBatangOTF",
-                fontStyle: "normal",
-                fontWeight: 400,
-                fontSize: "20px",
-                lineHeight: "100%",
-                textAlign: "center",
-                letterSpacing: "-0.005em",
-                color: "#FFFFFF",
-                zIndex: 1,
-              }}
-            >
-              제 1장
-            </div>
-
-            {/* 장식 요소 (골든 노트) */}
-            <div
-              className="relative"
-              style={{ width: "157px", height: "20px" }}
-            >
-              {/* 장식 요소들을 SVG로 구현 */}
-              <svg
-                width="157"
-                height="20"
-                viewBox="0 0 157 20"
-                style={{ position: "absolute" }}
-              >
-                {/* 중앙 세로선 */}
-                <rect x="74.5" y="0" width="1" height="15" fill="#E6D9A4" />
-                {/* 중앙 가로선 */}
-                <rect x="73" y="7.5" width="11" height="1" fill="#E6D9A4" />
-                {/* 좌우 장식 요소들 */}
-                <rect x="68" y="9.5" width="1" height="1" fill="#E6D9A4" />
-                <rect x="88" y="9.5" width="1" height="1" fill="#E6D9A4" />
-                <rect x="71.5" y="6.5" width="1" height="1" fill="#E6D9A4" />
-                <rect x="84.5" y="6.5" width="1" height="1" fill="#E6D9A4" />
-                <rect x="73.5" y="4.5" width="1" height="1" fill="#E6D9A4" />
-                <rect x="82.5" y="4.5" width="1" height="1" fill="#E6D9A4" />
-                <rect x="73.5" y="11.5" width="1" height="1" fill="#E6D9A4" />
-                <rect x="82.5" y="11.5" width="1" height="1" fill="#E6D9A4" />
-              </svg>
-            </div>
-
-            {/* 나의 사주 팔자 */}
-            <div
-              style={{
-                width: "157px",
-                height: "20px",
-                fontFamily: "GyeonggiBatangOTF",
-                fontStyle: "normal",
-                fontWeight: 400,
-                fontSize: "20px",
-                lineHeight: "100%",
-                textAlign: "center",
-                letterSpacing: "-0.005em",
-                color: "#FFFFFF",
-                zIndex: 1,
-              }}
-            >
-              나의 사주 팔자
-            </div>
-          </div>
+          ></div>
 
           {/* 그라데이션 오버레이 */}
           <div
@@ -315,16 +249,17 @@ export default function Home() {
               transform: "rotate(-180deg)",
             }}
           />
-          
+
           {/* 하단 그라데이션 오버레이 */}
           <div
             className="absolute"
             style={{
-              width: "375px",
+              width: "100%",
               height: "195px",
-              left: "calc(50% - 375px/2 - 0px)",
-              top: "463px",
-              background: "linear-gradient(180deg, rgba(243, 242, 239, 0) 25.16%, #F3F2EF 100%)",
+              left: "0px",
+              bottom: "0px",
+              background:
+                "linear-gradient(180deg, rgba(243, 242, 239, 0) 25.16%, #F3F2EF 100%)",
               transform: "matrix(-1, 0, 0, 1, 0, 0)",
             }}
           />
@@ -339,7 +274,7 @@ export default function Home() {
 
         {/* 손글씨 이미지 및 텍스트 */}
         <div className="flex justify-center items-center flex-col gap-1">
-          <img src="/handwrite.png" alt="슥슥" className="w-[100px]" />
+          <img src="/character2.jpg" alt="서예 붓을 든 손" className="w-full" />
           <div className="text-xs text-gray-700">슥슥</div>
         </div>
 
