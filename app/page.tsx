@@ -265,23 +265,16 @@ export default function Home() {
           />
         </div>
 
-        {/* 말풍선 1 */}
-        <div className="relative my-4 px-6">
-          <div className="bg-white rounded-[30px] shadow-md px-4 py-3 w-fit max-w-[90%] mx-auto text-sm text-black">
-            이게... 진짜 내 팔자라고?
-          </div>
-        </div>
-
         {/* 손글씨 이미지 및 텍스트 */}
-        <div className="flex justify-center items-center  px-4 py-3 flex-col gap-1">
+        <div
+          className="flex justify-center items-center flex-col gap-1"
+          style={{
+            marginTop: "114px",
+            marginBottom: "40px",
+            marginRight: "24px",
+          }}
+        >
           <img src="/character2.jpg" alt="서예 붓을 든 손" className="w-full" />
-        </div>
-
-        {/* 말풍선 2 */}
-        <div className="relative my-4 px-6">
-          <div className="bg-white rounded-[30px] shadow-md px-4 py-3 w-fit max-w-[90%] mx-auto text-sm text-black">
-            흠... 사주팔자에 대해 공부해볼까?
-          </div>
         </div>
 
         {/* 캐릭터 공부 이미지 */}
