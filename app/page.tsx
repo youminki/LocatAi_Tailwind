@@ -1,45 +1,638 @@
-import ChatBubble from "@/components/ChatBubble";
-import SajuChart from "@/components/SajuChart";
+import React from "react";
+
+// 사주팔자 데이터 타입 정의
+interface SajuData {
+  hour: {
+    tenStar: string;
+    heavenlyStem: string;
+    earthlyBranch: string;
+    tenStar2: string;
+    luckStar: string;
+    shinSal: string;
+    nobleman: string;
+  };
+  day: {
+    tenStar: string;
+    heavenlyStem: string;
+    earthlyBranch: string;
+    tenStar2: string;
+    luckStar: string;
+    shinSal: string;
+    nobleman: string;
+  };
+  month: {
+    tenStar: string;
+    heavenlyStem: string;
+    earthlyBranch: string;
+    tenStar2: string;
+    luckStar: string;
+    shinSal: string;
+    nobleman: string;
+  };
+  year: {
+    tenStar: string;
+    heavenlyStem: string;
+    earthlyBranch: string;
+    tenStar2: string;
+    luckStar: string;
+    shinSal: string;
+    nobleman: string;
+  };
+}
+
+// 사주팔자 데이터
+const sajuData: SajuData = {
+  hour: {
+    tenStar: "傷官",
+    heavenlyStem: "甲",
+    earthlyBranch: "寅",
+    tenStar2: "比肩",
+    luckStar: "死",
+    shinSal: "劫殺",
+    nobleman: "(없음)",
+  },
+  day: {
+    tenStar: "比肩",
+    heavenlyStem: "丁",
+    earthlyBranch: "巳",
+    tenStar2: "劫財",
+    luckStar: "帝旺",
+    shinSal: "地殺",
+    nobleman: "(없음)",
+  },
+  month: {
+    tenStar: "傷官",
+    heavenlyStem: "癸",
+    earthlyBranch: "亥",
+    tenStar2: "食神",
+    luckStar: "胎",
+    shinSal: "驛馬殺",
+    nobleman: "天乙",
+  },
+  year: {
+    tenStar: "傷官",
+    heavenlyStem: "癸",
+    earthlyBranch: "酉",
+    tenStar2: "偏財",
+    luckStar: "長生",
+    shinSal: "將星殺",
+    nobleman: "天乙, 太極, 文昌",
+  },
+};
+
+// 천간 박스 컴포넌트
+const HeavenlyStemBox: React.FC<{
+  stem: string;
+  element: string;
+  korean: string;
+  bgColor: string;
+}> = ({ stem, element, korean, bgColor }) => (
+  <div
+    className={`w-14 h-14 ${bgColor} rounded-xl flex flex-col items-center justify-center text-white mx-auto`}
+  >
+    <div className="text-2xl">{stem}</div>
+    <div className="text-xs">{element}</div>
+    <div className="text-[8px]">{korean}</div>
+  </div>
+);
+
+// 지지 박스 컴포넌트
+const EarthlyBranchBox: React.FC<{
+  branch: string;
+  element: string;
+  korean: string;
+  bgColor: string;
+  textColor?: string;
+}> = ({ branch, element, korean, bgColor, textColor = "text-white" }) => (
+  <div
+    className={`w-14 h-14 ${bgColor} rounded-xl flex flex-col items-center justify-center ${textColor} mx-auto`}
+  >
+    <div className="text-2xl">{branch}</div>
+    <div className="text-xs">{element}</div>
+    <div className="text-[8px]">{korean}</div>
+  </div>
+);
+
+// 테이블 행 컴포넌트
+const TableRow: React.FC<{
+  label: string;
+  hourData: string;
+  dayData: string;
+  monthData: string;
+  yearData: string;
+  borderStyle?: string;
+}> = ({
+  label,
+  hourData,
+  dayData,
+  monthData,
+  yearData,
+  borderStyle = "border-b border-[#9B9B9B]",
+}) => (
+  <tr className={borderStyle}>
+    <td className="py-2">
+      <div className="text-sm">{hourData}</div>
+      <div className="text-[10px] font-bold">
+        ({getKoreanLabel(label, hourData)})
+      </div>
+    </td>
+    <td className="py-2">
+      <div className="text-sm">{dayData}</div>
+      <div className="text-[10px] font-bold">
+        ({getKoreanLabel(label, dayData)})
+      </div>
+    </td>
+    <td className="py-2">
+      <div className="text-sm">{monthData}</div>
+      <div className="text-[10px] font-bold">
+        ({getKoreanLabel(label, monthData)})
+      </div>
+    </td>
+    <td className="py-2">
+      <div className="text-sm">{yearData}</div>
+      <div className="text-[10px] font-bold">
+        ({getKoreanLabel(label, yearData)})
+      </div>
+    </td>
+  </tr>
+);
+
+// 한글 라벨 매핑 함수
+const getKoreanLabel = (category: string, value: string): string => {
+  const mappings: { [key: string]: { [key: string]: string } } = {
+    tenStar: {
+      傷官: "상관",
+      比肩: "비견",
+      劫財: "겁재",
+      食神: "식신",
+      偏財: "편재",
+    },
+    heavenlyStem: {
+      甲: "갑",
+      丁: "정",
+      癸: "계",
+    },
+    earthlyBranch: {
+      寅: "인",
+      巳: "사",
+      亥: "해",
+      酉: "유",
+    },
+    element: {
+      陽木: "양목",
+      陰火: "음화",
+      陰水: "음수",
+      陰金: "음금",
+    },
+    luckStar: {
+      死: "사",
+      帝旺: "제왕",
+      胎: "태",
+      長生: "장생",
+    },
+    shinSal: {
+      劫殺: "겁살",
+      地殺: "지살",
+      驛馬殺: "역마살",
+      將星殺: "장성살",
+    },
+    nobleman: {
+      天乙: "천을귀인",
+      太極: "태극귀인",
+      文昌: "문창귀인",
+      "(없음)": "없음",
+    },
+  };
+
+  return mappings[category]?.[value] || value;
+};
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100 py-8 px-4">
-      <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
-        {/* 헤더 */}
-        <div className="bg-blue-600 text-white p-4 text-center">
-          <h1 className="text-xl font-bold">로켓AI 채팅</h1>
+      <div
+        className="relative w-full max-w-md mx-auto bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url(/Frame 1410141530.jpg)`,
+          minHeight: "800px",
+        }}
+      >
+        {/* Section 1 Title */}
+        <div className="w-full h-[220px] bg-gradient-to-b from-black/90 to-transparent flex flex-col items-center justify-center text-white text-center">
+          <div className="text-xl font-bold">제 1장</div>
+          <div className="text-lg mt-2">나의 사주 팔자</div>
         </div>
 
-        {/* 채팅 영역 */}
-        <div className="p-4 space-y-4">
-          <ChatBubble
-            message="안녕하세요! 로켓AI입니다. 무엇을 도와드릴까요?"
-            isUser={false}
-          />
-          <ChatBubble
-            message="사주팔자에 대해 궁금한 점이 있어요. 자세히 설명해주세요."
-            isUser={true}
-          />
-          <ChatBubble
-            message="사주팔자는 태어난 년, 월, 일, 시를 기준으로 운명을 분석하는 동양철학입니다. 각각의 시간대는 천간(天干)과 지지(地支)로 표현되며, 이를 통해 개인의 성격과 운명을 파악할 수 있습니다."
-            isUser={false}
-          />
-          <ChatBubble
-            message="그렇다면 제 사주팔자를 분석해볼 수 있나요?"
-            isUser={true}
-          />
-          <ChatBubble
-            message="네, 물론입니다! 아래에 사주팔자 차트를 보여드리겠습니다. 각 기둥은 년주, 월주, 일주, 시주를 나타내며, 천간과 지지의 조합으로 운명을 해석합니다."
-            isUser={false}
-          />
+        {/* 캐릭터 이미지 */}
+        <img src="/character1.png" alt="캐릭터" className="w-full" />
+
+        {/* 말풍선 1 */}
+        <div className="relative my-4 px-6">
+          <div className="bg-white rounded-[30px] shadow-md px-4 py-3 w-fit max-w-[90%] mx-auto text-sm text-black">
+            이게... 진짜 내 팔자라고?
+          </div>
         </div>
 
-        {/* 사주팔자 차트 */}
-        <div className="p-4 bg-gray-50">
-          <h2 className="text-lg font-semibold text-center mb-4 text-gray-800">
-            사주팔자 차트
-          </h2>
-          <SajuChart />
+        {/* 손글씨 이미지 및 텍스트 */}
+        <div className="flex justify-center items-center flex-col gap-1">
+          <img src="/handwrite.png" alt="슥슥" className="w-[100px]" />
+          <div className="text-xs text-gray-700">슥슥</div>
+        </div>
+
+        {/* 말풍선 2 */}
+        <div className="relative my-4 px-6">
+          <div className="bg-white rounded-[30px] shadow-md px-4 py-3 w-fit max-w-[90%] mx-auto text-sm text-black">
+            흠... 사주팔자에 대해 공부해볼까?
+          </div>
+        </div>
+
+        {/* 캐릭터 공부 이미지 */}
+        <img src="/character2.png" alt="공부하는 캐릭터" className="w-full" />
+
+        {/* 사주팔자표 컴포넌트 */}
+        <div className="my-6">
+          <div
+            className="relative w-full max-w-[351px] mx-auto border-[3px] border-[#1B2F49] shadow-lg rounded-md overflow-hidden"
+            style={{
+              backgroundImage: "url('/Frame 1410141530.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              minHeight: "600px",
+            }}
+          >
+            {/* 헤더 */}
+            <div className="text-center py-3 font-bold text-sm border-b border-[#2B557E]">
+              <div className="text-[#424242] text-base">김로켓님의 사주</div>
+              <div className="text-[#424242] text-xl font-bold mt-1">
+                1980년 8월27일 08:10
+              </div>
+            </div>
+
+            {/* 테이블 컨테이너 */}
+            <div className="p-5">
+              {/* 메인 테이블 그리드 */}
+              <div className="w-[310px] h-[473.83px] mx-auto bg-white bg-opacity-80 rounded-lg overflow-hidden">
+                {/* 테이블 구조 */}
+                <div className="grid grid-cols-5 grid-rows-8 h-full">
+                  {/* 빈 셀 (좌상단) */}
+                  <div className="col-span-1 row-span-1"></div>
+
+                  {/* 컬럼 헤더 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black">
+                    時
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black">
+                    日
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black">
+                    月
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center text-[20.9229px] leading-[30px] font-normal text-black border-b-2 border-black">
+                    年
+                  </div>
+
+                  {/* 로우 라벨 - 첫 번째 십성 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                    <div className="text-[11.9985px] leading-[17px] font-normal text-black">
+                      十星
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (십성)
+                    </div>
+                  </div>
+
+                  {/* 첫 번째 십성 데이터들 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[14.6688px] leading-[21px] font-normal text-black">
+                      傷官
+                    </div>
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (상관)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[14.6688px] leading-[21px] font-normal text-black">
+                      比肩
+                    </div>
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (비견)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[14.6688px] leading-[21px] font-normal text-black">
+                      傷官
+                    </div>
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (상관)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[14.6688px] leading-[21px] font-normal text-black">
+                      傷官
+                    </div>
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (상관)
+                    </div>
+                  </div>
+
+                  {/* 로우 라벨 - 천간 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                    <div className="text-[11.9985px] leading-[17px] font-normal text-black">
+                      天干
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (천간)
+                    </div>
+                  </div>
+
+                  {/* 천간 박스들 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#2F2F2F] rounded-[12.5537px] flex flex-col items-center justify-center">
+                      <div className="text-white text-[25.1075px] leading-[36px] font-normal">
+                        壬
+                      </div>
+                      <div className="text-white text-[8.36916px] leading-[12px] font-normal">
+                        陽水
+                      </div>
+                      <div className="text-white text-[7.60467px] leading-[8px] font-normal">
+                        임
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#18868C] rounded-[12.5537px] flex flex-col items-center justify-center">
+                      <div className="text-white text-[25.1075px] leading-[36px] font-normal">
+                        丁
+                      </div>
+                      <div className="text-white text-[8.36916px] leading-[12px] font-normal">
+                        陰火
+                      </div>
+                      <div className="text-white text-[7.60467px] leading-[8px] font-normal">
+                        정
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#C23030] rounded-[12.5537px] flex flex-col items-center justify-center">
+                      <div className="text-white text-[25.1075px] leading-[36px] font-normal">
+                        癸
+                      </div>
+                      <div className="text-white text-[8.36916px] leading-[12px] font-normal">
+                        陰水
+                      </div>
+                      <div className="text-white text-[7.60467px] leading-[8px] font-normal">
+                        계
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b-2 border-black">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#2F2F2F] rounded-[12.5537px] flex flex-col items-center justify-center">
+                      <div className="text-[#F9F9F9] text-[25.1075px] leading-[36px] font-normal">
+                        癸
+                      </div>
+                      <div className="text-[#F9F9F9] text-[8.36916px] leading-[12px] font-normal">
+                        陰水
+                      </div>
+                      <div className="text-[#F9F9F9] text-[7.60467px] leading-[8px] font-normal">
+                        계
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 로우 라벨 - 지지 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                    <div className="text-[11.9985px] leading-[17px] font-normal text-black">
+                      地支
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (지지)
+                    </div>
+                  </div>
+
+                  {/* 지지 박스들 */}
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#18868C] rounded-[12.5537px] flex flex-col items-center justify-center">
+                      <div className="text-white text-[25.1075px] leading-[36px] font-normal">
+                        寅
+                      </div>
+                      <div className="text-white text-[8.36916px] leading-[12px] font-normal">
+                        陽木
+                      </div>
+                      <div className="text-white text-[7.60467px] leading-[8px] font-normal">
+                        인
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#C23030] rounded-[12.5537px] flex flex-col items-center justify-center">
+                      <div className="text-white text-[25.1075px] leading-[36px] font-normal">
+                        巳
+                      </div>
+                      <div className="text-white text-[8.36916px] leading-[12px] font-normal">
+                        陰火
+                      </div>
+                      <div className="text-white text-[7.60467px] leading-[8px] font-normal">
+                        사
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#2F2F2F] rounded-[12.5537px] flex flex-col items-center justify-center">
+                      <div className="text-white text-[25.1075px] leading-[36px] font-normal">
+                        亥
+                      </div>
+                      <div className="text-white text-[8.36916px] leading-[12px] font-normal">
+                        陰水
+                      </div>
+                      <div className="text-white text-[7.60467px] leading-[8px] font-normal">
+                        해
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="w-[55.45px] h-[55.45px] bg-[#F9F9F9] border border-black rounded-[12.5537px] flex flex-col items-center justify-center">
+                      <div className="text-black text-[25.1075px] leading-[36px] font-normal">
+                        酉
+                      </div>
+                      <div className="text-black text-[8.36916px] leading-[12px] font-normal">
+                        陰金
+                      </div>
+                      <div className="text-black text-[7.60467px] leading-[8px] font-normal">
+                        유
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 로우 라벨 - 두 번째 십성 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                    <div className="text-[11.9985px] leading-[17px] font-normal text-black">
+                      十星
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (십성)
+                    </div>
+                  </div>
+
+                  {/* 두 번째 십성 데이터들 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[14.6688px] leading-[21px] font-normal text-black">
+                      比肩
+                    </div>
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (비견)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[14.6688px] leading-[21px] font-normal text-black">
+                      劫財
+                    </div>
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (겁재)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[14.6688px] leading-[21px] font-normal text-black">
+                      食神
+                    </div>
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (식신)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[14.6688px] leading-[21px] font-normal text-black">
+                      偏財
+                    </div>
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (편재)
+                    </div>
+                  </div>
+
+                  {/* 로우 라벨 - 십이운성 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      十二運星
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (십이운성)
+                    </div>
+                  </div>
+
+                  {/* 십이운성 데이터들 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      死
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (사)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      帝旺
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (제왕)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      胎
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (태)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      長生
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (장생)
+                    </div>
+                  </div>
+
+                  {/* 로우 라벨 - 십이신살 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      十二神殺
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (십이신살)
+                    </div>
+                  </div>
+
+                  {/* 십이신살 데이터들 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      劫殺
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (겁살)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      地殺
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (지살)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      驛馬殺
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (역마살)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-b border-[#9B9B9B]">
+                    <div className="text-[9.77918px] leading-[14px] font-normal text-black">
+                      將星殺
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (장성살)
+                    </div>
+                  </div>
+
+                  {/* 로우 라벨 - 귀인 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center border-r border-black">
+                    <div className="text-[11.9985px] leading-[17px] font-normal text-black">
+                      貴人
+                    </div>
+                    <div className="text-[7.82334px] leading-[8px] font-bold text-black">
+                      (귀인)
+                    </div>
+                  </div>
+
+                  {/* 귀인 데이터들 */}
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center">
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (없음)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center">
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      (없음)
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center">
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      天乙
+                    </div>
+                  </div>
+                  <div className="col-span-1 row-span-1 flex flex-col items-center justify-center">
+                    <div className="text-[9.77918px] leading-[10px] font-bold text-black">
+                      <div>天乙</div>
+                      <div>太極</div>
+                      <div>文昌</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
