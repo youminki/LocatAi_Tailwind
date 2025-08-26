@@ -217,14 +217,27 @@ export default function Home() {
           minHeight: "800px",
         }}
       >
-        {/* Section 1 Title */}
-        <div className="w-full h-[220px] bg-gradient-to-b from-black/90 to-transparent flex flex-col items-center justify-center text-white text-center">
-          <div className="text-xl font-bold">제 1장</div>
-          <div className="text-lg mt-2">나의 사주 팔자</div>
-        </div>
-
         {/* 캐릭터 이미지 */}
-        <img src="/character1.png" alt="캐릭터" className="w-full" />
+        <div className="relative">
+          <img
+            src="/character1.jpg"
+            alt="전통 한복을 입은 여성 캐릭터"
+            className="w-full"
+          />
+          {/* 그라데이션 오버레이 */}
+          <div
+            className="absolute"
+            style={{
+              width: "100%",
+              height: "261px",
+              left: "0px",
+              top: "0px",
+              background:
+                "linear-gradient(180deg, rgba(0, 0, 0, 0) 25.16%, #000000 100%)",
+              transform: "rotate(-180deg)",
+            }}
+          />
+        </div>
 
         {/* 말풍선 1 */}
         <div className="relative my-4 px-6">
