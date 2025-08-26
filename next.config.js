@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  // Next.js 13+ App Router는 기본적으로 활성화됨
+  // experimental.appDir는 더 이상 필요하지 않음
 };
 
-/* global module */
 module.exports = nextConfig;
