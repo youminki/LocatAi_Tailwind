@@ -287,13 +287,14 @@ export default function Home() {
         {/* 사주팔자표 컴포넌트 */}
         <div className="my-6">
           <div
-            className="relative w-full max-w-[351px] mx-auto border-[3px] border-[#1B2F49] shadow-lg  overflow-hidden"
+            className="relative w-full max-w-[448px] mx-auto border-[3px] border-[#1B2F49] shadow-lg  overflow-hidden"
             style={{
+              padding: "30px 0",
               backgroundImage: "url('/Frame 1410141530.jpg')",
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              minHeight: "600px",
+              minHeight: "621px",
             }}
           >
             {/* 헤더 */}
@@ -306,7 +307,7 @@ export default function Home() {
               <div
                 className="text-[#424242]"
                 style={{
-                  width: "220px",
+                  width: "100%",
                   height: "16px",
                   fontFamily: "Gapyeong Hanseokbong",
                   fontStyle: "normal",
@@ -322,7 +323,7 @@ export default function Home() {
               <div
                 className="text-[#424242]"
                 style={{
-                  width: "220px",
+                  width: "100%",
                   height: "20px",
                   fontFamily: "Gapyeong Hanseokbong",
                   fontStyle: "normal",
@@ -341,7 +342,7 @@ export default function Home() {
             {/* 테이블 컨테이너 */}
             <div className="p-5">
               {/* 메인 테이블 그리드 */}
-              <div className="w-[310px] mx-auto bg-white bg-opacity-80 overflow-hidden border-r-2 border-b-2 border-black">
+              <div className=" mx-auto bg-white bg-opacity-80 overflow-hidden border-r-2 border-b-2 border-black">
                 {/* 테이블 구조 - 5열 8행 */}
                 <div className="grid grid-cols-5 auto-rows-auto h-auto">
                   {/* 1행: 컬럼 헤더 */}
