@@ -1,211 +1,212 @@
 import React from "react";
 
-// 사주팔자 데이터 타입 정의
-interface SajuData {
-  hour: {
-    tenStar: string;
-    heavenlyStem: string;
-    earthlyBranch: string;
-    tenStar2: string;
-    luckStar: string;
-    shinSal: string;
-    nobleman: string;
-  };
-  day: {
-    tenStar: string;
-    heavenlyStem: string;
-    earthlyBranch: string;
-    tenStar2: string;
-    luckStar: string;
-    shinSal: string;
-    nobleman: string;
-  };
-  month: {
-    tenStar: string;
-    heavenlyStem: string;
-    earthlyBranch: string;
-    tenStar2: string;
-    luckStar: string;
-    shinSal: string;
-    nobleman: string;
-  };
-  year: {
-    tenStar: string;
-    heavenlyStem: string;
-    earthlyBranch: string;
-    tenStar2: string;
-    luckStar: string;
-    shinSal: string;
-    nobleman: string;
-  };
-}
+// 사주팔자 데이터 타입 정의 (현재 사용하지 않음)
+// interface SajuData {
+//   hour: {
+//     tenStar: string;
+//     heavenlyStem: string;
+//     earthlyBranch: string;
+//     tenStar2: string;
+//     luckStar: string;
+//     shinSal: string;
+//     nobleman: string;
+//   };
+//   day: {
+//     tenStar: string;
+//     heavenlyStem: string;
+//     earthlyBranch: string;
+//     tenStar2: string;
+//     luckStar: string;
+//     shinSal: string;
+//     nobleman: string;
+//   };
+//   month: {
+//     tenStar: string;
+//     heavenlyStem: string;
+//     earthlyBranch: string;
+//     tenStar2: string;
+//     luckStar: string;
+//     shinSal: string;
+//     nobleman: string;
+//   };
+//   year: {
+//     tenStar: string;
+//     heavenlyStem: string;
+//     earthlyBranch: string;
+//     tenStar2: string;
+//     luckStar: string;
+//     shinSal: string;
+//     nobleman: string;
+//   };
+// }
 
-// 사주팔자 데이터
-const sajuData: SajuData = {
-  hour: {
-    tenStar: "傷官",
-    heavenlyStem: "甲",
-    earthlyBranch: "寅",
-    tenStar2: "比肩",
-    luckStar: "死",
-    shinSal: "劫殺",
-    nobleman: "(없음)",
-  },
-  day: {
-    tenStar: "比肩",
-    heavenlyStem: "丁",
-    earthlyBranch: "巳",
-    tenStar2: "劫財",
-    luckStar: "帝旺",
-    shinSal: "地殺",
-    nobleman: "(없음)",
-  },
-  month: {
-    tenStar: "傷官",
-    heavenlyStem: "癸",
-    earthlyBranch: "亥",
-    tenStar2: "食神",
-    luckStar: "胎",
-    shinSal: "驛馬殺",
-    nobleman: "天乙",
-  },
-  year: {
-    tenStar: "傷官",
-    heavenlyStem: "癸",
-    earthlyBranch: "酉",
-    tenStar2: "偏財",
-    luckStar: "長生",
-    shinSal: "將星殺",
-    nobleman: "天乙, 太極, 文昌",
-  },
-};
+// 사주팔자 데이터 (현재 사용하지 않음)
+// const sajuData: SajuData = {
+//   hour: {
+//     tenStar: "傷官",
+//     heavenlyStem: "甲",
+//     earthlyBranch: "寅",
+//     tenStar2: "比肩",
+//     luckStar: "死",
+//     shinSal: "劫殺",
+//     nobleman: "(없음)",
+//   },
+//   day: {
+//     tenStar: "比肩",
+//     heavenlyStem: "丁",
+//     earthlyBranch: "巳",
+//     tenStar2: "劫財",
+//     luckStar: "帝旺",
+//     shinSal: "地殺",
+//     nobleman: "(없음)",
+//   },
+//   month: {
+//     tenStar: "傷官",
+//     heavenlyStem: "癸",
+//     earthlyBranch: "亥",
+//     tenStar2: "食神",
+//     luckStar: "胎",
+//     shinSal: "驛馬殺",
+//     nobleman: "天乙",
+//   },
+//   year: {
+//     tenStar: "傷官",
+//     heavenlyStem: "癸",
+//     earthlyBranch: "酉",
+//     tenStar2: "偏財",
+//     luckStar: "長生",
+//     shinSal: "將星殺",
+//     nobleman: "天乙, 太極, 文昌",
+//   },
+// };
 
-// 천간 박스 컴포넌트
-const HeavenlyStemBox: React.FC<{
-  stem: string;
-  element: string;
-  korean: string;
-  bgColor: string;
-}> = ({ stem, element, korean, bgColor }) => (
-  <div
-    className={`w-14 h-14 ${bgColor} rounded-xl flex flex-col items-center justify-center text-white mx-auto`}
-  >
-    <div className="text-2xl">{stem}</div>
-    <div className="text-xs">{element}</div>
-    <div className="text-[8px]">{korean}</div>
-  </div>
-);
+// 천간 박스 컴포넌트 (현재 사용하지 않음)
+// const HeavenlyStemBox: React.FC<{
+//   stem: string;
+//   element: string;
+//   korean: string;
+//   bgColor: string;
+// }> = ({ stem, element, korean, bgColor }) => (
+//   <div
+//     className={`w-14 h-14 ${bgColor} rounded-xl flex flex-col items-center justify-center text-white mx-auto`}
+//   >
+//     <div className="text-2xl">{stem}</div>
+//     <div className="text-xs">{element}</div>
+//     <div className="text-[8px]">{korean}</div>
+//   </div>
+// );
 
-// 지지 박스 컴포넌트
-const EarthlyBranchBox: React.FC<{
-  branch: string;
-  element: string;
-  korean: string;
-  bgColor: string;
-  textColor?: string;
-}> = ({ branch, element, korean, bgColor, textColor = "text-white" }) => (
-  <div
-    className={`w-14 h-14 ${bgColor} rounded-xl flex flex-col items-center justify-center ${textColor} mx-auto`}
-  >
-    <div className="text-2xl">{branch}</div>
-    <div className="text-xs">{element}</div>
-    <div className="text-[8px]">{korean}</div>
-  </div>
-);
+// 지지 박스 컴포넌트 (현재 사용하지 않음)
+// const EarthlyBranchBox: React.FC<{
+//   branch: string;
+//   element: string;
+//   korean: string;
+//   bgColor: string;
+//   textColor?: string;
+// }> = ({ branch, element, korean, bgColor, textColor = "text-white" }) => (
+//   <div
+//     className={`w-14 h-14 ${bgColor} rounded-xl flex flex-col items-center justify-center ${textColor} mx-auto`}
+//   >
+//     <div className="text-2xl">{branch}</div>
+//     <div className="text-xs">{element}</div>
+//     <div className="text-[8px]">{korean}</div>
+//   >
+//   </div>
+// );
 
-// 테이블 행 컴포넌트
-const TableRow: React.FC<{
-  label: string;
-  hourData: string;
-  dayData: string;
-  monthData: string;
-  yearData: string;
-  borderStyle?: string;
-}> = ({
-  label,
-  hourData,
-  dayData,
-  monthData,
-  yearData,
-  borderStyle = "border-b border-[#9B9B9B]",
-}) => (
-  <tr className={borderStyle}>
-    <td className="py-2">
-      <div className="text-sm">{hourData}</div>
-      <div className="text-[10px] font-bold">
-        ({getKoreanLabel(label, hourData)})
-      </div>
-    </td>
-    <td className="py-2">
-      <div className="text-sm">{dayData}</div>
-      <div className="text-[10px] font-bold">
-        ({getKoreanLabel(label, dayData)})
-      </div>
-    </td>
-    <td className="py-2">
-      <div className="text-sm">{monthData}</div>
-      <div className="text-[10px] font-bold">
-        ({getKoreanLabel(label, monthData)})
-      </div>
-    </td>
-    <td className="py-2">
-      <div className="text-sm">{yearData}</div>
-      <div className="text-[10px] font-bold">
-        ({getKoreanLabel(label, yearData)})
-      </div>
-    </td>
-  </tr>
-);
+// 테이블 행 컴포넌트 (현재 사용하지 않음)
+// const TableRow: React.FC<{
+//   label: string;
+//   hourData: string;
+//   dayData: string;
+//   monthData: string;
+//   yearData: string;
+//   borderStyle?: string;
+// }> = ({
+//   label,
+//   hourData,
+//   dayData,
+//   monthData,
+//   yearData,
+//   borderStyle = "border-b border-[#9B9B9B]",
+// }) => (
+//   <tr className={borderStyle}>
+//     <td className="py-2">
+//       <div className="text-sm">{hourData}</div>
+//       <div className="text-[10px] font-bold">
+//         ({getKoreanLabel(label, hourData)})
+//       </div>
+//     </td>
+//     <td className="py-2">
+//       <div className="text-sm">{dayData}</div>
+//       <div className="text-[10px] font-bold">
+//         ({getKoreanLabel(label, dayData)})
+//       </div>
+//     </td>
+//     <td className="py-2">
+//       <div className="text-sm">{monthData}</div>
+//       <div className="text-[10px] font-bold">
+//         ({getKoreanLabel(label, monthData)})
+//       </div>
+//     </td>
+//     <td className="py-2">
+//       <div className="text-sm">{yearData}</div>
+//       <div className="text-[10px] font-bold">
+//         ({getKoreanLabel(label, yearData)})
+//       </div>
+//     </td>
+//   </tr>
+// );
 
-// 한글 라벨 매핑 함수
-const getKoreanLabel = (category: string, value: string): string => {
-  const mappings: { [key: string]: { [key: string]: string } } = {
-    tenStar: {
-      傷官: "상관",
-      比肩: "비견",
-      劫財: "겁재",
-      食神: "식신",
-      偏財: "편재",
-    },
-    heavenlyStem: {
-      甲: "갑",
-      丁: "정",
-      癸: "계",
-    },
-    earthlyBranch: {
-      寅: "인",
-      巳: "사",
-      亥: "해",
-      酉: "유",
-    },
-    element: {
-      陽木: "양목",
-      陰火: "음화",
-      陰水: "음수",
-      陰金: "음금",
-    },
-    luckStar: {
-      死: "사",
-      帝旺: "제왕",
-      胎: "태",
-      長生: "장생",
-    },
-    shinSal: {
-      劫殺: "겁살",
-      地殺: "지살",
-      驛馬殺: "역마살",
-      將星殺: "장성살",
-    },
-    nobleman: {
-      天乙: "천을귀인",
-      太極: "태극귀인",
-      文昌: "문창귀인",
-      "(없음)": "없음",
-    },
-  };
+// 한글 라벨 매핑 함수 (현재 사용하지 않음)
+// const getKoreanLabel = (category: string, value: string): string => {
+//   const mappings: { [key: string]: { [key: string]: string } } = {
+//     tenStar: {
+//       傷官: "상관",
+//       比肩: "비견",
+//       劫財: "겁재",
+//       食神: "식신",
+//       偏財: "편재",
+//     },
+//     heavenlyStem: {
+//       甲: "갑",
+//       丁: "정",
+//       癸: "계",
+//     },
+//     earthlyBranch: {
+//       寅: "인",
+//       巳: "사",
+//       亥: "해",
+//       酉: "유",
+//     },
+//     element: {
+//       陽木: "양목",
+//       陰火: "음화",
+//       陰水: "음수",
+//       陰金: "음금",
+//     },
+//     luckStar: {
+//       死: "사",
+//       帝旺: "제왕",
+//       胎: "태",
+//       長生: "장생",
+//     },
+//     shinSal: {
+//       劫殺: "겁살",
+//       地殺: "지살",
+//       驛馬殺: "역마살",
+//       將星殺: "장성살",
+//     },
+//     nobleman: {
+//       天乙: "천을귀인",
+//       太極: "태극귀인",
+//       文昌: "문창귀인",
+//       "(없음)": "없음",
+//     },
+//   };
 
-  return mappings[category]?.[value] || value;
-};
+//   return mappings[category]?.[value] || value;
+// };
 
 export default function Home() {
   return (
